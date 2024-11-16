@@ -1,0 +1,11 @@
+services:
+
+  db:
+    image: postgres
+    container_name: work-load-test-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=work_load_test
+    ports:
+      - "5433:5432"
