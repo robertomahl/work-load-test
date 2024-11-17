@@ -5,6 +5,7 @@ import com.roberto.workloadtest.service.spec.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,4 +26,11 @@ public class UserController {
     public ResponseEntity<UserResponse> getById(@PathVariable Long userId) {
         return ResponseEntity.status(HttpStatus.OK).body(userService.getById(userId));
     }
+
+    @GetMapping
+    @Operation(summary = "Get user by email", description = "Get details of the user by email.")
+    public ResponseEntity<UserResponse> getByEmail(@Param("email") String email) {
+        return ResponseEntity.status(HttpStatus.OK).body(userService.getByEmail(email));
+    }
+
 }
